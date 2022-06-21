@@ -1,7 +1,9 @@
-# ![One Services](./logo.png)
+# ![One Service](./logo.png)
 
-# 其他
+![Build](https://github.com/maple512/services/actions/workflows/build.yml/badge.svg)
+![Publish](https://github.com/maple512/services/actions/workflows/publish.yml/badge.svg)
+![code line](https://img.shields.io/tokei/lines/github/maple512/services?style=flat)
+![release](https://img.shields.io/github/v/release/maple512/services?include_prereleases&style=flat)
+[![license](https://img.shields.io/github/license/maple512/services)](./LICENSE)
 
-- git submodule: <https://zhuanlan.zhihu.com/p/87053283>
-  - 更新：`git submodule foreach 'git pull origin main'`
-  - 提交：在子模块目录下执行正常git提交即可。`git commit -s -m 'message'` `git push`
+> `One Service`，一个服务
