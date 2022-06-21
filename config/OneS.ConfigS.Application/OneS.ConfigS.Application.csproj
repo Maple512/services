@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../../common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>$(NetFramework)</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneS.ConfigS.Application.Abstractions\OneS.ConfigS.Application.Abstractions.csproj" />
+    </ItemGroup>
+
+</Project>
