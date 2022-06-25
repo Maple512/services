@@ -13,42 +13,32 @@
 // limitations under the License.
 
 using System;
-using System.IO;
 using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using OneF.Moduleable;
-using OneS.MediateS;
-using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
+using OneS.MediateS.Commands;
+using Spectre.Console.Cli;
 
-Console.OutputEncoding = Encoding.UTF8;
+if(Console.IsOutputRedirected)
+{
+    Console.OutputEncoding = Encoding.UTF8;
+}
 
-const string logTemplate = "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} [{SourceContext}]{NewLine}{Exception}";
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-Log.Logger = new LoggerConfiguration()
-             .MinimumLevel.Information()
-             .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-             .WriteTo.Console(outputTemplate: logTemplate, theme: SystemConsoleTheme.Literate, applyThemeToRedirectedOutput: true)
-             .WriteTo.File(path: Path.Combine(CliPath.Log, ".log"), rollingInterval: RollingInterval.Day, outputTemplate: logTemplate)
-             .CreateLogger();
+var app = new CommandApp<RootCommand>();
 
-var services = new ServiceCollection();
+app.Configure(config =>
+{
+#if DEBUG
+    config.PropagateExceptions();
+    config.ValidateExamples();
+#endif
+});
 
-ModuleFactory.ConfigureServices<CliExecutor>(services);
+#if DEBUG
+args = "--info".Split(' ');
+#endif
 
-services.AddLogging(
-    builder =>
-    {
-        builder.AddSerilog();
-    });
-
-var serviceProvider = services.BuildServiceProvider();
-
-await serviceProvider.ConfigureAsync();
-
-await serviceProvider.GetRequiredService<CliExecutor>()
-    .ExecuteAsync(args);
+await app.RunAsync(args);
 
 #if DEBUG
 Console.ReadKey();

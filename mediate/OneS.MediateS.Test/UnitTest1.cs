@@ -12,30 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS.Commands;
+namespace OneS.MediateS.Test;
 
+using System;
+using System.CommandLine;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using Xunit;
 
-public class ServiceCommand : CommandBase<ServiceCommandOptions>
+public class UnitTest1
 {
-    private readonly ILogger _logger;
-
-    public ServiceCommand(ILogger<ServiceCommand> logger)
+    [Fact]
+    public async Task Test1Async()
     {
-        _logger = logger;
+        var rootCommand = new RootCommand("Sample command-line app");
+
+        rootCommand.SetHandler(() =>
+        {
+            Console.WriteLine("Hello world!");
+        });
     }
-
-    public override string Name { get; } = "service";
-
-    protected override ValueTask ExecuteCoreAsync(ServiceCommandOptions options)
-    {
-        return ValueTask.CompletedTask;
-    }
-}
-
-public class ServiceCommandOptions : CommandOptions
-{
-    [CommandOptions("name", "n")]
-    public string Name { get; set; }
 }

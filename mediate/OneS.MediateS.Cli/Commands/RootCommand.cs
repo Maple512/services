@@ -14,14 +14,39 @@
 
 namespace OneS.MediateS.Commands;
 
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
+using OneS.MediateS.Infrastructures;
+using Spectre.Console;
+using Spectre.Console.Cli;
 
-public sealed class RootCommand : CommandBase
+public class RootCommand : Command<RootCommandSettings>
 {
-    public override string Name { get; } = OneSConstants.OneSLover;
-
-    public override ValueTask ExecuteAsync()
+    public override int Execute([NotNull] CommandContext context, [NotNull] RootCommandSettings settings)
     {
-        return ValueTask.CompletedTask;
+        if(settings.Info)
+        {
+            PrintInfo();
+        }
+
+        return 0;
     }
+
+    private static void PrintInfo()
+    {
+        // welcome
+        AnsiConsole.Write(new Rule($"Welcome to [yellow bold]{MediateSCliConstants.Cli}[/] (repo: [underline blue]https://github.com/maple512/services[/])").RuleStyle("grey").LeftAligned());
+        AnsiConsole.WriteLine();
+
+        var info = CliInfo.Instance.Value;
+        AnsiConsole.MarkupLine($"{nameof(info.Version)}: {info.Version}");
+        AnsiConsole.MarkupLine($"{nameof(info.Commit)}: {info.Commit}");
+        AnsiConsole.MarkupLine($"NET Version: {info.Framework}");
+        AnsiConsole.MarkupLine($"{nameof(info.RootPath)}: {info.RootPath}");
+    }
+}
+
+public class RootCommandSettings : CommandSettings
+{
+    [CommandOption("-i|--info")]
+    public bool Info { get; set; }
 }
