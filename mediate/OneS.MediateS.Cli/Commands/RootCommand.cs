@@ -14,12 +14,13 @@
 
 namespace OneS.MediateS.Commands;
 
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using OneS.MediateS.Infrastructures;
+using OneS.MediateS.Infrastructure;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
-public class RootCommand : Command<RootCommandSettings>
+public sealed class RootCommand : Command<RootCommandSettings>
 {
     public override int Execute([NotNull] CommandContext context, [NotNull] RootCommandSettings settings)
     {
@@ -27,8 +28,19 @@ public class RootCommand : Command<RootCommandSettings>
         {
             PrintInfo();
         }
+        else if(settings.Version)
+        {
+            PrintVersion();
+        }
 
         return 0;
+    }
+
+    private static void PrintVersion()
+    {
+        var info = CliInfo.Instance.Value;
+
+        AnsiConsole.MarkupLine($"{nameof(info.Version)}: {info.Version}");
     }
 
     private static void PrintInfo()
@@ -40,13 +52,18 @@ public class RootCommand : Command<RootCommandSettings>
         var info = CliInfo.Instance.Value;
         AnsiConsole.MarkupLine($"{nameof(info.Version)}: {info.Version}");
         AnsiConsole.MarkupLine($"{nameof(info.Commit)}: {info.Commit}");
-        AnsiConsole.MarkupLine($"NET Version: {info.Framework}");
+        AnsiConsole.MarkupLine($"NET Version1: {info.Framework}");
         AnsiConsole.MarkupLine($"{nameof(info.RootPath)}: {info.RootPath}");
     }
 }
 
-public class RootCommandSettings : CommandSettings
+public sealed class RootCommandSettings : CommandSettings
 {
+    [Description("显示CLI的一些信息")]
     [CommandOption("-i|--info")]
     public bool Info { get; set; }
+
+    [Description("显示CLI的版本信息")]
+    [CommandOption("-v|--version")]
+    public bool Version { get; set; }
 }

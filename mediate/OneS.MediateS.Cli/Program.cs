@@ -14,6 +14,7 @@
 
 using System;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 using OneS.MediateS.Commands;
 using Spectre.Console.Cli;
 
@@ -32,10 +33,17 @@ app.Configure(config =>
     config.PropagateExceptions();
     config.ValidateExamples();
 #endif
+
+    config.AddCommand<CliCommand>("cli");
+
+    config.AddCommand<HubCommand>("hub");
 });
 
 #if DEBUG
-args = "--info".Split(' ');
+if(args.Length == 0)
+{
+    args = "-h".Split(' ');
+}
 #endif
 
 await app.RunAsync(args);

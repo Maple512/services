@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS;
+namespace OneS.MediateS.Infrastructure;
 
-internal static class MediateSCliConstants
+using System.IO;
+
+public static class CliPath
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
+    public static readonly string Cli = Path.Combine(MediateSConstants.RootPath, "cli");
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
+    public static readonly string Log = Path.Combine(Cli, "logs");
 
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
-
-    public const string SettingsFileName = "settings.json";
+    public static readonly string SettingFile = Path.Combine(Cli, MediateSCliConstants.SettingsFileName);
 }

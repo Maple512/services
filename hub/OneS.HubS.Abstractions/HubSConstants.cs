@@ -12,15 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS;
+namespace OneS.HubS;
 
-internal static class MediateSCliConstants
+public static class HubSConstants
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
+    public const string HubS = nameof(HubS);
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
-
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
-
-    public const string SettingsFileName = "settings.json";
+    public const string OneSHubS = $"{OneSConstants.OneS} {HubS}";
 }

@@ -14,13 +14,16 @@
 
 namespace OneS.MediateS;
 
-internal static class MediateSCliConstants
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/// <summary>
+/// 提供开放接口供客户端访问
+/// </summary>
+public interface IClientServer
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
-
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
-
-    public const string SettingsFileName = "settings.json";
 }

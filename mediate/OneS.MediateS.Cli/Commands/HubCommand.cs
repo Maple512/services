@@ -12,15 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS;
+namespace OneS.MediateS.Commands;
 
-internal static class MediateSCliConstants
+using System;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using Spectre.Console.Cli;
+
+[Description("包含一些与 Hub 相关的功能")]
+public sealed class HubCommand : Command<HubCommandSettings>
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
+    public override int Execute([NotNull] CommandContext context, [NotNull] HubCommandSettings settings)
+    {
+        throw new NotImplementedException();
+    }
+}
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
+public sealed class HubCommandSettings : CommandSettings
+{
 
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
-
-    public const string SettingsFileName = "settings.json";
 }

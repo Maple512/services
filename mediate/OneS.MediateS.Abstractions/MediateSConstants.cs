@@ -14,19 +14,14 @@
 
 namespace OneS.MediateS;
 
-using System;
 using System.IO;
+using System;
 
-public static class CliPath
+public static class MediateSConstants
 {
-#if DEBUG
-    public static readonly string Root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), MediateSCliConstants.RootFolderName, "DEBUG");
-#else
-    public static readonly string Root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), MediateSCliConstants.RootFolderName);
-#endif
-    public static readonly string Cli = Path.Combine(Root, "cli");
+    public const string MediateS = nameof(MediateS);
 
-    public static readonly string Log = Path.Combine(Cli, "logs");
+    public const string OneSMediateS = $"{OneSConstants.OneS} {MediateS}";
 
-    public static readonly string SettingFile = Path.Combine(Cli, MediateSCliConstants.SettingsFileName);
+    public static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), $".{OneSConstants.OneSLover}");
 }

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS.Infrastructures;
+namespace OneS.MediateS.Infrastructure;
 
 using System;
 using System.Diagnostics;
@@ -40,7 +40,7 @@ public class CliInfo
 
     public static CliInfo Initializer()
     {
-        var rootPath = Directory.GetCurrentDirectory();
+        var rootPath = Environment.CurrentDirectory;
 
         var infoFile = Path.Combine(rootPath, _infoFileName);
 

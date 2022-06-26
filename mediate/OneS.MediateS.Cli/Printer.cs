@@ -14,13 +14,20 @@
 
 namespace OneS.MediateS;
 
-internal static class MediateSCliConstants
+using System;
+using Spectre.Console;
+
+internal static class Printer
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
+    public static void Loading(string title, Action action)
+    {
+        AnsiConsole.Status()
+                .Start(title, ctx =>
+                {
+                    ctx.Spinner(Spinner.Known.Dots8Bit);
+                    ctx.SpinnerStyle(Style.Parse("green"));
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
-
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
-
-    public const string SettingsFileName = "settings.json";
+                    action();
+                });
+    }
 }

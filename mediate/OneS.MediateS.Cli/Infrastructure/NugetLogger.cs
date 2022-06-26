@@ -12,15 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS;
+namespace OneS.MediateS.Infrastructure;
 
-internal static class MediateSCliConstants
+using System.Threading.Tasks;
+using NuGet.Common;
+using Spectre.Console;
+
+internal class NugetLogger : LoggerBase
 {
-    public const string CliFullName = "OneS.MediateS.Cli";
+    public static readonly ILogger Instance = new NugetLogger();
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
+    public override void Log(ILogMessage message)
+    {
+        AnsiConsole.WriteLine(message.ToString() ?? string.Empty);
+    }
 
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
+    public override Task LogAsync(ILogMessage message)
+    {
+        AnsiConsole.WriteLine(message.ToString() ?? string.Empty);
 
-    public const string SettingsFileName = "settings.json";
+        return Task.CompletedTask;
+    }
 }

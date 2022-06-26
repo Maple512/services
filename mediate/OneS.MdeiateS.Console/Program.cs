@@ -12,15 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.MediateS;
+using System;
+using Grpc.Net.Client;
+using GrpcGreeterClient;
 
-internal static class MediateSCliConstants
-{
-    public const string CliFullName = "OneS.MediateS.Cli";
+// The port number must match the port of the gRPC server.
+using var channel = GrpcChannel.ForAddress("https://localhost:5001");
 
-    public const string Cli = $"{MediateSConstants.OneSMediateS} CLI";
+var client = new Greeter.GreeterClient(channel);
 
-    public const string RootFolderName = $".{OneSConstants.OneSLover}";
+var reply = await client.SayHelloAsync(new HelloRequest { Name = "GreeterClient" });
 
-    public const string SettingsFileName = "settings.json";
-}
+Console.WriteLine("Greeting: " + reply.Message);
+
+Console.WriteLine("Press any key to exit...");
+
+Console.ReadKey();

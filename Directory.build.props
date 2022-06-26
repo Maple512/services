@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <RootName>OneS</RootName>
-        <OneFVersion>0.0.1-rc.220621.1</OneFVersion>
+        <OneFVersion>0.0.2</OneFVersion>
 
         <!-- Net Version -->
         <NetStandard>netstandard2.0</NetStandard>

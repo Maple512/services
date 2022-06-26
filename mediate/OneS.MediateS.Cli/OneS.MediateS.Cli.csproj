@@ -10,17 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="OneF.Moduleable" Version="$(OneFVersion)" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-        <PackageReference Include="OneF.Utilityable" Version="0.0.1-rc.220621.1" />
-        <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
-        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+        <PackageReference Include="NuGet.Protocol" Version="6.2.1" />
+        <PackageReference Include="OneF.Moduleable" Version="$(OneFVersion)" />
+        <PackageReference Include="OneF.Utilityable" Version="$(OneFVersion)" />
         <PackageReference Include="Spectre.Console" Version="0.44.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\OneS.MediateS\OneS.MediateS.csproj" />
+      <ProjectReference Include="..\OneS.MediateS.Abstractions\OneS.MediateS.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>
