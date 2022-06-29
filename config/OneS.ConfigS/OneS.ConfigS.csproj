@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="OneF.Moduleable.Abstractions" Version="0.0.2-rc.220628.1" />
+      <PackageReference Include="OneF.Moduleable.Abstractions" Version="$(OneFVersion)" />
     </ItemGroup>
 
     <ItemGroup>
