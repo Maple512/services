@@ -12,27 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.HubS.Services;
+namespace OneS.HubS.Entities;
 
-using System.Threading.Tasks;
-using Grpc.Core;
-using Microsoft.Extensions.Logging;
-using OneS.HubS.GrpcService;
+using OneF.Domainable.Entities;
 
-public class GreeterService : Greeter.GreeterBase
+public class Service : Entity<long>
 {
-    private readonly ILogger<GreeterService> _logger;
+    public string Name { get; }
 
-    public GreeterService(ILogger<GreeterService> logger)
-    {
-        _logger = logger;
-    }
+    public string? Tags { get; init; }
 
-    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
-    {
-        return Task.FromResult(new HelloReply
-        {
-            Message = "Hello " + request.Name
-        });
-    }
+    public string Version { get; init; }
 }
