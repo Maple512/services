@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "OneS.HubS.Protos";
+
+service MediateService{
+    rpc Registration(RegistrationResult) returns (RegistrationRequest);
+}
+
+message RegistrationResult{
+
+}
+
+message RegistrationRequest{
+    string version = 1;
+}

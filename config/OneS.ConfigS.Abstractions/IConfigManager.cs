@@ -12,15 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.HubS.Entities;
+namespace OneS.ConfigS;
 
-using OneF.Domainable.Entities;
+using System.Threading;
+using System.Threading.Tasks;
 
-public class Service : Entity<long>
+/// <summary>
+/// 配置管理
+/// </summary>
+public interface IConfigManager
 {
-    public string Name { get; }
+    /// <summary>
+    /// 获取最新配置
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    ValueTask GetAsync(CancellationToken cancellationToken = default);
 
-    public string? Tags { get; init; }
-
-    public string Version { get; init; }
+    /// <summary>
+    /// 更新配置
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    ValueTask SetAsync(CancellationToken cancellationToken = default);
 }

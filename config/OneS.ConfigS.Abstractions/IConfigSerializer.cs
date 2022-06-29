@@ -14,18 +14,22 @@
 
 namespace OneS.ConfigS;
 
+using System;
+using System.IO;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class ConfigService : IConfigService
+/// <summary>
+/// 配置序列化器
+/// </summary>
+public interface IConfigSerializer
 {
-    public Task<TValue> GetAsync<TValue>(string key, CancellationToken cancellationToken = default)
-    {
-        throw new System.NotImplementedException();
-    }
+    T? Deserialize<T>(ReadOnlySpan<byte> data, JsonSerializerOptions? options = null);
 
-    public Task SaveAsync<TValue>(string key, TValue value, CancellationToken cancellationToken = default)
-    {
-        throw new System.NotImplementedException();
-    }
+    ValueTask<T?> DeserializeAsync<T>(Stream data, JsonSerializerOptions? options = null, CancellationToken cancellationToken = default);
+
+    ReadOnlySpan<byte> Serialize<T>(T data, JsonSerializerOptions? options = null);
+
+    ValueTask<ReadOnlyMemory<byte>> SerializeAsync<T>(T data, JsonSerializerOptions? options = null, CancellationToken cancellationToken = default);
 }

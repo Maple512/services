@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.ConfigS.Domain;
+namespace OneS.HubS.Mediates;
 
-public class Class1
+using ProtoBuf;
+
+[ProtoContract]
+public class RegistrationRequest
 {
+    [ProtoMember(1, IsRequired = true)]
+    public string Id { get; set; }
 
+    [ProtoMember(2, IsRequired = true)]
+    public string Host { get; set; }
 }

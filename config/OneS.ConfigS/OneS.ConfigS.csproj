@@ -1,9 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../../common.props"/>
+    <Import Project="../../common.props" />
 
     <PropertyGroup>
         <TargetFramework>$(NetFramework)</TargetFramework>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="OneF.Moduleable.Abstractions" Version="0.0.2-rc.220628.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OneS.ConfigS.Abstractions\OneS.ConfigS.Abstractions.csproj" />
+    </ItemGroup>
 
 </Project>

@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.ConfigS;
+namespace OneS.HubS.Services;
 
-public static class OneSConfigConstants
+using OneF.Domainable.Repositories;
+
+public interface IServiceRepository : IRepository<Service, long>
 {
-    public const string OneSConfig = "Config";
 }

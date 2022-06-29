@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "OneS.sln",
+    "projects": [
+      "config\\OneS.ConfigS.Abstractions\\OneS.ConfigS.Abstractions.csproj",
+      "config\\OneS.ConfigS.Test\\OneS.ConfigS.Test.csproj",
+      "config\\OneS.ConfigS\\OneS.ConfigS.csproj"
+    ]
+  }
+}

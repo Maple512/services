@@ -12,14 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.ConfigS;
+namespace OneS.MediateS;
 
-using System.Threading;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-public interface IConfigService 
+public interface IMediateClient
 {
-    Task<TValue> GetAsync<TValue>(string key, CancellationToken cancellationToken = default);
+    long Id { get; }
 
-    Task SaveAsync<TValue>(string key, TValue value, CancellationToken cancellationToken = default);
+    string Host { get; }
+
+    string Port { get; }
+
+    string 
 }

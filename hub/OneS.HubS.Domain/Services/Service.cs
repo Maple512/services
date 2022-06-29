@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.ConfigS;
+namespace OneS.HubS.Services;
 
-public interface IConfigKey
+using OneF.Domainable.Entities;
+
+public class Service : Entity<long>
 {
-    string Key { get; }
+    public string Name { get; }
+
+    public string? Tags { get; init; }
+
+    public string Version { get; init; }
 }

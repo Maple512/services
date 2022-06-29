@@ -12,26 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace OneS.ConfigS.Test;
+namespace OneS.ConfigS;
 
-using Shouldly;
-using Xunit;
+using OneF.Moduleable;
 
-public class UnitTest1
+public sealed class ConfigSModule : OneFModule
 {
-    [Fact]
-    public void Test1()
-    {
-        var userKey = new UserKey(1);
-
-        (1 + userKey).ShouldBe(2);
-    }
-}
-
-public readonly record struct UserKey(long Key)
-{
-    public static implicit operator long(UserKey user)
-    {
-        return user.Key;
-    }
 }
